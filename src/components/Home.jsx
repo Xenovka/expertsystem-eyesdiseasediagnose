@@ -1,13 +1,11 @@
 import React from "react";
-import styled from "styled-components";
-
-const Wrapper = styled.div`
-  margin-top: 10px;
-  margin-left: 10px;
-`;
 
 const Home = () => {
-  return <Wrapper>Home</Wrapper>;
+  return (
+    <div>
+      <h1 className="font-bold mt-10">Hello World</h1>
+    </div>
+  );
 };
 
 export default Home;
