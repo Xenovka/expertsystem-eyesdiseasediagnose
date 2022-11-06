@@ -69,8 +69,11 @@ const Home = () => {
 
   return (
     <div className="p-4">
-      <h1 className="font-bold">Gejala</h1>
-      {/* <div className="text-red-500">{errors.checkbox?.message}</div> */}
+      <h1 className="font-bold">Symptom(s)</h1>
+      <ol>
+        {symptoms.map((s) => gejala.map((g, i) => (s === g.val ? <li key={i}>{g.nama}</li> : "")))}
+        {/* <div className="text-red-500">{errors.checkbox?.message}</div> */}
+      </ol>
       <form onSubmit={onFormSubmit}>
         {/* {(() => {
           // let row = [];
