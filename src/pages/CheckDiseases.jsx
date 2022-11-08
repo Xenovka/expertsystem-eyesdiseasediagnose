@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { gejala, penyakit } from "../data";
 
-const Home = () => {
+const CheckDisease = () => {
   const [symptoms, setSymptoms] = useState([]);
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [selected, setSelected] = useState("select");
@@ -48,15 +48,15 @@ const Home = () => {
   };
 
   return (
-    <div className="p-4">
-      <h1 className="font-bold">Symptom(s)</h1>
-      <ol>{symptoms.map((s) => gejala.map((g, i) => (s === g.val ? <li key={i}>{g.nama}</li> : "")))}</ol>
+    <div className="px-10 py-6 flex justify-center items-center flex-col">
+      <h1 className="font-bold mb-4">Select the Symptom(s)</h1>
       <form onSubmit={onFormSubmit}>
         <select
           name="symptoms"
           value={selected}
           id="symptoms"
           onChange={(e) => setSymptoms([...symptoms, e.target.value])}
+          className="p-2 border border-solid border-black rounded-lg"
         >
           <option value="select" disabled>
             Select Symptom
@@ -74,8 +74,22 @@ const Home = () => {
           disabled={btnDisabled}
         />
       </form>
+      {symptoms.length >= 1 && <h1 className="mt-5 font-semibold">Selected Symptom(s) : </h1>}
+      <ol className="mt-5">
+        {symptoms.map((s) =>
+          gejala.map((g, i) =>
+            s === g.val ? (
+              <li key={i} className="text-base">
+                - {g.nama}
+              </li>
+            ) : (
+              ""
+            )
+          )
+        )}
+      </ol>
     </div>
   );
 };
 
-export default Home;
+export default CheckDisease;

@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="mt-2 flex justify-around w-52">
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
+    <div className="p-4 bg-zinc-900 w-full">
+      <div className="flex justify-around w-auto text-white font-semibold text-md">
+        <Link to="/">Home</Link>
+        <Link to="/check-diseases">Check Diseases</Link>
+        <Link to="/about">About</Link>
+      </div>
     </div>
   );
 };
