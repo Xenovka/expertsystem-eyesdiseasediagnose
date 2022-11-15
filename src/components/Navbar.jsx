@@ -6,7 +6,7 @@ const Navbar = () => {
     <div className="p-4 bg-zinc-900 w-full">
       <div className="flex justify-around w-auto text-white font-semibold text-md">
         <Link to="/">Home</Link>
-        <Link to="/check-diseases">Check Diseases</Link>
+        <Link to="/eyes/check">Eyes Check</Link>
         <Link to="/about">About</Link>
       </div>
     </div>

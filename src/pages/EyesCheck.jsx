@@ -22,13 +22,11 @@ const CheckDisease = () => {
     e.preventDefault();
 
     penyakit.map((p) => {
-      if (p.gejala.every((g) => symptoms.includes(g))) {
-        result.disease.push(p);
-        result.match = true;
-      } else if (p.gejala.some((g) => symptoms.includes(g))) {
+      if (p.gejala.every((g) => symptoms.includes(g)) && p.gejala.length === symptoms.length) {
         result.disease.push(p);
         result.match = true;
       }
+
       return result;
     });
 
