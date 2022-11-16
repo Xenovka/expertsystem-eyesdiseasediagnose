@@ -47,14 +47,14 @@ const CheckDisease = () => {
 
   return (
     <div className="px-10 py-6 flex justify-center items-center flex-col">
-      <h1 className="font-bold mb-4">Select the Symptom(s)</h1>
+      <h1 className="font-bold text-tertiary mb-4">Select the Symptom(s)</h1>
       <form onSubmit={onFormSubmit}>
         <select
           name="symptoms"
           value={selected}
           id="symptoms"
           onChange={(e) => setSymptoms([...symptoms, e.target.value])}
-          className="p-2 border border-solid border-black rounded-lg"
+          className="p-2 border border-black rounded-lg outline-none border-none"
         >
           <option value="select" disabled>
             Select Symptom
@@ -66,18 +66,18 @@ const CheckDisease = () => {
           ))}
         </select>
         <input
-          className="block mt-6 bg-green-400 border-0 border-solid border-sky-500 px-6 py-2 rounded text-white font-bold cursor-pointer disabled:bg-gray-500 disabled:cursor-not-allowed transition-all ease-in"
+          className="block mt-6 bg-secondary border-0 border-solid border-sky-500 px-6 py-2 rounded text-white font-bold cursor-pointer disabled:!bg-gray-500 disabled:cursor-not-allowed transition-all ease-in"
           type="submit"
           value="Submit"
           disabled={btnDisabled}
         />
       </form>
-      {symptoms.length >= 1 && <h1 className="mt-5 font-semibold">Selected Symptom(s) : </h1>}
+      {symptoms.length >= 1 && <h1 className="mt-5 text-tertiary font-semibold">Selected Symptom(s) : </h1>}
       <ol className="mt-5">
         {symptoms.map((s) =>
           gejala.map((g, i) =>
             s === g.val ? (
-              <li key={i} className="text-base">
+              <li key={i} className="text-base text-tertiary">
                 - {g.nama}
               </li>
             ) : (
