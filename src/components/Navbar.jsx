@@ -17,7 +17,7 @@ const Navbar = () => {
           to="/eyes/check"
           className={({ isActive }) => (isActive || pathname === "/eyes/result" ? activeClassName : inactiveClassName)}
         >
-          EYES CHECK
+          PERIKSA
         </NavLink>
         <NavLink to="/about" className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}>
           ABOUT

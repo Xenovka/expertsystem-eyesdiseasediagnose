@@ -54,8 +54,8 @@ const CheckDisease = () => {
 
   return (
     <div className="px-10 py-6 flex justify-center items-center flex-col">
-      <h1 className="font-extrabold text-tertiary mb-6 text-4xl">CHECK YOUR EYES CONDITION</h1>
-      <h1 className="font-semibold text-tertiary mb-4">Requires {minSymptom} Symptoms Selected!</h1>
+      <h1 className="font-extrabold text-tertiary mb-6 text-4xl">PERIKSA PENYAKIT MATA ANDA</h1>
+      <h1 className="font-semibold text-tertiary mb-4">Pilih Minimal {minSymptom} Gejala!</h1>
       <form onSubmit={onFormSubmit}>
         <select
           name="selectedSymptom"
@@ -65,7 +65,7 @@ const CheckDisease = () => {
           className="p-2 border border-black rounded-lg outline-none border-none"
         >
           <option value="select" disabled>
-            Select Symptom
+            Pilih Gejala
           </option>
           {gejala.map((g) => (
             <option key={g.val} value={g.val}>
@@ -76,11 +76,11 @@ const CheckDisease = () => {
         <input
           className="block mt-6 bg-secondary px-6 py-2 rounded text-white font-bold cursor-pointer disabled:!bg-gray-600 disabled:cursor-not-allowed transition-all ease-in"
           type="submit"
-          value="Check"
+          value="Periksa"
           title={
             selected.length >= minSymptom
-              ? "Start Diseases Checking"
-              : `Not enough symptom selected (required ${minSymptom} symptoms)`
+              ? "Mulai Periksa Penyakit"
+              : `Tidak memenuhi jumlah minimum gejala (minimal ${minSymptom} gejala dipilih)`
           }
           disabled={btnDisabled}
         />
