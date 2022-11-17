@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { gejala, penyakit } from "../data";
+import SelectedSymptoms from "../components/SelectedSymptoms";
 
 const CheckDisease = () => {
   const [selectedSymptom, setSelectedSymptoms] = useState([]);
   const [btnDisabled, setBtnDisabled] = useState(true);
-  const [selected, setSelected] = useState("select");
+  const [result, setResult] = useState(null);
+  const navigate = useNavigate();
 
-  const result = { disease: [{ nama: "", gejala: [], penjelasan: "", faktor: "", solusi: "" }], match: false };
+  const selected = "select";
 
   const minSymptom = Math.min(
     ...penyakit.map((p) => {
@@ -18,42 +21,35 @@ const CheckDisease = () => {
     })
   );
 
-  const isSelectedMoreThanMin = selected >= minSymptom;
-
   useEffect(() => {
     if (selectedSymptom.length >= minSymptom) {
       setBtnDisabled(false);
     } else if (selectedSymptom.length < minSymptom) {
       setBtnDisabled(true);
-      setSelected("select");
     }
   }, [selectedSymptom, minSymptom]);
 
-  const onFormSubmit = (e) => {
-    e.preventDefault();
-
+  useEffect(() => {
     penyakit.map((p) => {
       if (p.gejala.every((g) => selectedSymptom.includes(g)) && p.gejala.length === selectedSymptom.length) {
-        result.disease.push(p);
-        result.match = true;
+        setResult(p);
       }
 
       return result;
     });
 
-    if (result.match) {
-      alert(
-        `Penyakit: ${result.disease.slice(1).map((e) => {
-          return e.nama;
-        })}`
-      );
-    } else {
-      alert("Sorry, no diseases were found from the given symptom(s).");
-    }
+    console.log(result);
+  }, [selectedSymptom, result]);
 
-    console.log(selectedSymptom, result.disease);
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+
     setSelectedSymptoms([]);
     setBtnDisabled(true);
+    navigate("../result", {
+      replace: true,
+      state: result
+    });
   };
 
   return (
@@ -78,31 +74,18 @@ const CheckDisease = () => {
           ))}
         </select>
         <input
-          className="block mt-6 bg-secondary border-0 border-solid border-sky-500 px-6 py-2 rounded text-white font-bold cursor-pointer disabled:!bg-gray-500 disabled:cursor-not-allowed transition-all ease-in"
+          className="block mt-6 bg-secondary px-6 py-2 rounded text-white font-bold cursor-pointer disabled:!bg-gray-600 disabled:cursor-not-allowed transition-all ease-in"
           type="submit"
           value="Check"
           title={
-            isSelectedMoreThanMin
+            selected.length >= minSymptom
               ? "Start Diseases Checking"
               : `Not enough symptom selected (required ${minSymptom} symptoms)`
           }
           disabled={btnDisabled}
         />
       </form>
-      {selectedSymptom.length >= 1 && <h1 className="mt-5 text-tertiary font-semibold">Selected Symptom(s) : </h1>}
-      <ol className="mt-5 list-disc">
-        {selectedSymptom.map((s) =>
-          gejala.map((g, i) =>
-            s === g.val ? (
-              <li key={i} className="text-base text-tertiary">
-                {g.nama}
-              </li>
-            ) : (
-              ""
-            )
-          )
-        )}
-      </ol>
+      <SelectedSymptoms selectedSymptom={selectedSymptom} gejala={gejala} />
     </div>
   );
 };
