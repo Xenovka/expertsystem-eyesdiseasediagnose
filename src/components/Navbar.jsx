@@ -2,8 +2,8 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 const Navbar = () => {
-  const activeClassName = "text-secondaryLight";
-  const inactiveClassName = "text-white";
+  const inactiveClassName = "text-secondaryLight";
+  const activeClassName = "text-white";
 
   const { pathname } = useLocation();
 

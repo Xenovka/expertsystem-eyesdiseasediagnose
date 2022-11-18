@@ -19,7 +19,7 @@ const SelectedSymptoms = ({ selectedSymptom, gejala }) => {
           )}
         </ol>
       ) : (
-        <h1 className="text-white font-normal">Gejala Akan Ditampilkan Disini.</h1>
+        <h1 className="text-white font-normal">Gejala akan ditampilkan di sini.</h1>
       )}
     </div>
   );

@@ -7,7 +7,7 @@ const EyesCheckResult = () => {
 
   return (
     <div>
-      <h1 className="text-tertiary text-4xl text-center font-extrabold mb-8">HASIL DIAGNOSA SISTEM</h1>
+      <h1 className="text-tertiary text-4xl text-center font-extrabold mb-8">HASIL DIAGNOSIS SISTEM</h1>
       <div className="w-3/5 p-10 mx-auto bg-secondary rounded-lg">
         {result ? (
           <div>
@@ -16,18 +16,18 @@ const EyesCheckResult = () => {
             </h1>
             <div>
               <h1 className="text-white text-lg font-normal mt-6">
-                Apa itu <span className="font-semibold">{result.nama}</span> ?
+                Apa itu <span className="font-semibold">{result.nama}</span>?
               </h1>
               <p className="ml-4 text-white"> ▶ {result.penjelasan}</p>
             </div>
             <div>
               <h1 className="text-white text-lg font-normal mt-6">
-                Apa saja faktor terjadinya <span className="font-semibold">{result.nama}</span> ?
+                Apa saja faktor terjadinya <span className="font-semibold">{result.nama}</span>?
               </h1>
               <p className="ml-4 text-white"> ▶ {result.faktor}</p>
             </div>
             <div>
-              <h1 className="text-white text-lg font-normal mt-6">Apa solusi yang harus dilakukan ?</h1>
+              <h1 className="text-white text-lg font-normal mt-6">Apa solusi yang harus dilakukan?</h1>
               <p className="ml-4 text-white"> ▶ {result.solusi}</p>
             </div>
           </div>

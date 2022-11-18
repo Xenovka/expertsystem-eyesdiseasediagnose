@@ -55,7 +55,7 @@ const CheckDisease = () => {
   return (
     <div className="px-10 py-6 flex justify-center items-center flex-col">
       <h1 className="font-extrabold text-tertiary mb-6 text-4xl">PERIKSA PENYAKIT MATA ANDA</h1>
-      <h1 className="font-semibold text-tertiary mb-4">Pilih Minimal {minSymptom} Gejala!</h1>
+      <h1 className="font-semibold text-tertiary mb-4">Pilih minimal {minSymptom} gejala!</h1>
       <form onSubmit={onFormSubmit}>
         <select
           name="selectedSymptom"
