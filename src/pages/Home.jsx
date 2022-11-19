@@ -7,7 +7,7 @@ const Home = () => {
     <div className="text-white mt-12">
       <div className="flex place-content-center mb-8">
         <div className="my-auto mr-6">
-          <p className="text-4xl mb-2">Diagnosis Penyakit Mata</p>
+          <p className="text-4xl mb-2 font-semibold">Diagnosis Penyakit Mata</p>
           <p className="text-xl">
             Periksa kondisi kesehatan mata Anda dengan cepat <br/>
             dan mudah sekarang juga!
@@ -36,12 +36,12 @@ const Home = () => {
       <div className="flex place-content-center mt-6">
         <img src={img2} className="w-64 my-auto mr-6" alt="" />
         <div className="my-auto">
-          <p className="text-4xl mb-2">Seberapa jelas penglihatan Anda?</p>
+          <p className="text-4xl mb-2 font-semibold">Seberapa jelas penglihatan Anda?</p>
           <p className="text-xl mb-6">
             Kenali berbagai jenis penyakit mata beserta faktor risiko yang ditimbulkan <br/>
             sesuai dengan gejala yang Anda rasakan.
           </p>
-          <button class="bg-secondary py-2 px-4 rounded text-xl transition ease-in-out delay-100 hover:translate-x-2 hover:scale-110 hover:bg-sky-900 duration-300">
+          <button class="bg-secondary py-2 px-4 rounded text-xl font-medium transition ease-in-out delay-100 hover:translate-x-2 hover:scale-110 hover:bg-sky-900 duration-300">
             <a href="/eyes/check">Periksa Sekarang</a>
           </button>
         </div> 
