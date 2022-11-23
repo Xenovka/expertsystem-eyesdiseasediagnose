@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import getSymptomCode from "../helpers/getSymptomCode";
 
 import { gejala, penyakit } from "../data";
 import SelectedSymptoms from "../components/SelectedSymptoms";
@@ -52,6 +53,13 @@ const CheckDisease = () => {
     });
   };
 
+  const onItemRemove = (e) => {
+    const removedSymptom = e.target.parentElement.innerText.split("\n")[0];
+    const listSymptomsAfterRemove = selectedSymptom.filter((symptom) => symptom !== getSymptomCode(removedSymptom));
+    setSelectedSymptoms(listSymptomsAfterRemove);
+    return;
+  };
+
   return (
     <div className="px-10 py-6 flex justify-center items-center flex-col">
       <h1 className="font-extrabold text-tertiary mb-6 text-4xl">PERIKSA PENYAKIT MATA ANDA</h1>
@@ -85,7 +93,7 @@ const CheckDisease = () => {
           disabled={btnDisabled}
         />
       </form>
-      <SelectedSymptoms selectedSymptom={selectedSymptom} gejala={gejala} />
+      <SelectedSymptoms handleRemoveItem={onItemRemove} selectedSymptom={selectedSymptom} gejala={gejala} />
     </div>
   );
 };
