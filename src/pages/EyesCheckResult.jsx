@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const EyesCheckResult = () => {
-  const { state: result } = useLocation();
-  console.log(result);
+const EyesCheckResult = ({ getResult }) => {
+  const [result, setResult] = useState([]);
+  const { state: selectedSymptom } = useLocation();
+  console.log(selectedSymptom);
+
+  useEffect(() => {
+    setResult(getResult(selectedSymptom));
+    console.log(result);
+  }, [selectedSymptom, getResult, result]);
 
   return (
     <div>

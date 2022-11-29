@@ -6,9 +6,8 @@ import { gejala, penyakit } from "../data";
 import SelectedSymptoms from "../components/SelectedSymptoms";
 
 const CheckDisease = () => {
-  const [selectedSymptom, setSelectedSymptoms] = useState([]);
+  const [selectedSymptom, setSelectedSymptom] = useState([]);
   const [btnDisabled, setBtnDisabled] = useState(true);
-  const [result, setResult] = useState(null);
   const navigate = useNavigate();
 
   const selected = "select";
@@ -30,33 +29,21 @@ const CheckDisease = () => {
     }
   }, [selectedSymptom, minSymptom]);
 
-  useEffect(() => {
-    penyakit.map((p) => {
-      if (p.gejala.every((g) => selectedSymptom.includes(g)) && p.gejala.length === selectedSymptom.length) {
-        setResult(p);
-      }
-
-      return result;
-    });
-
-    console.log(result);
-  }, [selectedSymptom, result]);
-
   const onFormSubmit = (e) => {
     e.preventDefault();
 
-    setSelectedSymptoms([]);
+    setSelectedSymptom([]);
     setBtnDisabled(true);
     navigate("../result", {
       replace: true,
-      state: result
+      state: selectedSymptom
     });
   };
 
   const onItemRemove = (e) => {
     const removedSymptom = e.target.parentElement.innerText.split("\n")[0];
     const listSymptomsAfterRemove = selectedSymptom.filter((symptom) => symptom !== getSymptomCode(removedSymptom));
-    setSelectedSymptoms(listSymptomsAfterRemove);
+    setSelectedSymptom(listSymptomsAfterRemove);
     return;
   };
 
@@ -69,7 +56,7 @@ const CheckDisease = () => {
           name="selectedSymptom"
           value={selected}
           id="selectedSymptom"
-          onChange={(e) => setSelectedSymptoms([...selectedSymptom, e.target.value])}
+          onChange={(e) => setSelectedSymptom([...selectedSymptom, e.target.value])}
           className="p-2 border border-black rounded-lg outline-none border-none"
         >
           <option value="select" disabled>
