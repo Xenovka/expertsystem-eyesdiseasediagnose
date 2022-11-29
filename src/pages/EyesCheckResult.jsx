@@ -15,7 +15,7 @@ const EyesCheckResult = ({ getResult }) => {
     <div>
       <h1 className="text-tertiary text-4xl text-center font-extrabold mb-8">HASIL DIAGNOSIS SISTEM</h1>
       <div className="w-3/5 p-10 mx-auto bg-secondary rounded-lg">
-        {result ? (
+        {result.length > 0 ? (
           <div>
             <h1 className="text-white text-center text-2xl font-semibold">
               Nama Penyakit : <span className="underline">{result.nama}</span>
