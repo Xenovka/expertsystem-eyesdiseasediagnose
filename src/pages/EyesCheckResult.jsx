@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import penyakit from "./../data/penyakit";
 
-const EyesCheckResult = ({ getResult }) => {
-  const [result, setResult] = useState([]);
+const EyesCheckResult = () => {
+  const [result, setResult] = useState({});
   const { state: selectedSymptom } = useLocation();
   console.log(selectedSymptom);
 
   useEffect(() => {
-    setResult(getResult(selectedSymptom));
     console.log(result);
-  }, [selectedSymptom, getResult, result]);
+    penyakit.forEach((p) =>
+      p.gejala.every((g) => selectedSymptom.includes(g)) && p.gejala.length === selectedSymptom.length
+        ? setResult(p)
+        : null
+    );
+  }, [result, selectedSymptom]);
 
   return (
     <div>
       <h1 className="text-tertiary text-4xl text-center font-extrabold mb-8">HASIL DIAGNOSIS SISTEM</h1>
       <div className="w-3/5 p-10 mx-auto bg-secondary rounded-lg">
-        {result.length > 0 ? (
+        {result.nama ? (
           <div>
             <h1 className="text-white text-center text-2xl font-semibold">
               Nama Penyakit : <span className="underline">{result.nama}</span>
